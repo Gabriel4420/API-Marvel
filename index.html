@@ -1,128 +1,76 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/main.css">
-    <title>Api Marvel</title>
-  </head>
-  <body class="center">
-    <h1>Personagens</h1>
-      <div class="row" >
-        <div class="card" style="width: 18rem;" id="c0">
-          <img id="i0" class="card-img-top img-thumbnail" src="" alt="Card image cap" >
-          <div class="card-body">
-            <h5 class="card-title" id="n0" >Card title</h5>
-            <h5 class="card-title" id="cod0" >Card title</h5>
-            <a href="#" onclick="showHistorys(this)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Stories</a>
-          </div>
-        </div>
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+  <title>Api Marvel</title>
+</head>
+
+<body class="center">
+  <header>
+    <div class="logo">
+      <img src="./images/logo.png" alt="">
+    </div>
+    <div class="center">
+      <h3>Nome do candidato:&nbsp; </h3>
+      <h3>Gabriel Rodrigues Perez</h3>
+    </div>
+    <div class="avatar">
+      <h1>G</h1>
+    </div>
+  </header>
+
+  <main>
+    <div class="content">
+      <h1>Buscar Personagens</h1>
+      <div id="search-box">
+        <input type="text" name="q" id="search-input">
+
+
+        <span class="lnr lnr-magnifier" id="search-icon"></span>
+
+
+
+      </div>
       
-    
-        <div class="card" style="width: 18rem;" id="c1">
-          <img id="i1" class="card-img-top img-thumbnail" src="" alt="Card image cap">
-          <div class="card-body">
-            <h5 id="n1" class="card-title">Card title</h5>
-            <h5 class="card-title" id="cod1" >Card title</h5>
-            <a href="#" onclick="showHistorys(this)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Stories</a>
-          </div>
+        <div class="tableHeader">
+          <h2>Personagem</h2>
+          <h2>Series</h2>
+          <h2>Eventos</h2>
+        </div>
+        <div id="table">
+          
+          
         </div>
 
-        <div class="card" style="width: 18rem;" id="c2">
-          <img id="i2" class="card-img-top img-thumbnail" src="" alt="Card image cap">
-          <div class="card-body">
-            <h5 id="n2" class="card-title">Card title</h5>
-            <h5 class="card-title" id="cod2" >Card title</h5>
-            <a href="#" onclick="showHistorys(this)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Stories</a>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="card" style="width: 18rem;" id="c3">
-          <img id="i3" class="card-img-top" src="" alt="Card image cap">
-          <div class="card-body">
-            <h5 id="n3" class="card-title">Card title</h5>
-            <h5 class="card-title" id="cod3" >Card title</h5>
-            <a href="#" onclick="showHistorys(this)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Stories</a>
-          </div>
-        </div>
+      
 
-        <div class="card" style="width: 18rem;" id="c4">
-          <img id="i4" class="card-img-top" src="" alt="Card image cap">
-          <div class="card-body">
-            <h5 id="n4" class="card-title">Card title</h5>
-            <h5 class="card-title" id="cod4" >Card title</h5>
-            <a href="#" onclick="showHistorys(this)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Stories</a>
-          </div>
-        </div>
 
-        <div class="card" style="width: 18rem;" id="c5">
-          <img id="i5" class="card-img-top" src="" alt="Card image cap">
-          <div class="card-body">
-            <h5 id="n5" class="card-title">Card title</h5>
-            <h5 class="card-title" id="cod5" >Card title</h5>
-            <a href="#" onclick="showHistorys(this)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Stories</a>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="card" style="width: 18rem;" id="c6">
-          <img id="i6" class="card-img-top" src="" alt="Card image cap">
-          <div class="card-body">
-            <h5 id="n6" class="card-title">Card title</h5>
-            <h5 class="card-title" id="cod6" >Card title</h5>
-            <a href="#"  onclick="showHistorys(this)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Stories</a>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem;" id="c7">
-          <img id="i7" class="card-img-top" src="" alt="Card image cap">
-          <div class="card-body">
-            <h5 id="n7" class="card-title">Card title</h5>
-            <h5 class="card-title" id="cod7" >Card title</h5>
-            <a href="#" onclick="showHistorys(this)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Stories</a>
-          </div>
-        </div>
-        <div class="card" style="width: 18rem;" id="c8">
-          <img id="i8" class="card-img-top" src="" alt="Card image cap">
-          <div class="card-body">
-            <h5 id="n8" class="card-title">Card title</h5>
-            <h5 class="card-title" id="cod8" >Card title</h5>
-            <a href="#" onclick="showHistorys(this)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Stories</a>
-          </div>
-        </div>
-      </div>
+      <nav aria-label="pagination">
+        <ul class="pagination">
+            <li class="item"><button class="link" onclick="renderTable(data.slice(1,7))">Anterior</button></li>
+            <li class="item"><button class="link" onclick="renderTable(data.slice(8,14))">Proximo</button></li>
+           
+        </ul>
+    </nav>
 
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Stories</h5>
-              </div>
-              <div class="modal-body">
-                <div class="list-group" id="historys">
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" onclick="clear()" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-    <span id="data" style="visibility: hidden">
+    </div>
+  </main>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <span id="data" style="visibility: hidden">
+
     <script src="js/md5.min.js"></script>
     <script src="js/requests.js"></script>
-    <script src="js/parseData.js"> </script>
-    <script>
-      getCharacterList();
-    </script>
-  </body>
+    <script src="js/pagination.js"></script>
+    
+    
+</body>
+
 </html>
