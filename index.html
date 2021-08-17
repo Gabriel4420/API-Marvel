@@ -55,11 +55,11 @@
 
       <nav aria-label="pagination">
         <ul class="pagination">
-            <li class="item"><button class="link" onclick="renderTable(data.slice(1,7))">Anterior</button></li>
-            <li class="item"><button class="link" onclick="renderTable(data.slice(8,14))">Proximo</button></li>
+            <li class="item"><button class="link" onclick="goPrevious(data)">Anterior</button></li>
+            <li class="item"><button class="link" onclick="goNext(data)">Proximo</button></li>
            
         </ul>
-    </nav>
+      </nav>
 
     </div>
   </main>
@@ -68,7 +68,6 @@
 
     <script src="js/md5.min.js"></script>
     <script src="js/requests.js"></script>
-    <script src="js/pagination.js"></script>
     
     
 </body>

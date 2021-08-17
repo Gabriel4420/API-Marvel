@@ -151,7 +151,7 @@ main #search-icon {
 
 main .content #table{
     display:flex;
-    width:100%;
+    width:95%;
     flex-direction:column;
     background:transparent;
     color:white;
@@ -167,23 +167,25 @@ main  .tableHeader {
     display: flex;
     align-items: center;
     justify-content: space-around;
-   
-    background-color: blue;
+    border: 1px solid white;
+    background-color: rgba(21, 21, 98, 0.548);
     color: white;
     width:90%;
 }
 
 main .content #table .table .tableContent {
-    margin: 55px;
+    margin: 35px;
     display: flex;
     flex-direction: column;
-    width:90%;
+    width:94.7%;
+    border: 1px solid white;
 }
 
 
 main .content #table .table .tableContent .row {
     display: flex;
     justify-content: space-between;
+    
     
 }
 
@@ -199,11 +201,16 @@ main .content #table .table .tableContent .row .info {
     display: flex;
     align-items: center;
     justify-content: center;
-    line-height: 20px;
+    line-height: 25px;
+   
 }
 
 main .content #table .table .tableContent .row .info ul{
     list-style:none;
+}
+
+main .content #table .table .tableContent .row .info ul li{
+    
 }
 
 
@@ -212,17 +219,21 @@ main .content #table .table .tableContent .row .infoEventos {
     align-items: center;
     justify-content: center;
     line-height: 20px;
+    padding-right:40px;
 
 }
 
+
+
 main .content #table .table .tableContent .row .infoEventos ul{
     list-style:none;
+  
 }
 
 main .content #table .table .tableContent .row .character img {
     width: 150px;
     height: 150px;
-    border-radius: 50%;
+    border-radius: 10%;
     margin: 10px;
 }
 
@@ -231,9 +242,21 @@ main .content #table .table .tableContent .row .chracter h3 {
 }
 
 
-.pagination{
+main .pagination .link{
     background-color:transparent;
+    color:white;
+    outline:0;
+    padding:15px;
+    border:1px solid white;
+    margin-left:10px;
+    cursor: pointer;
+}
 
+main .pagination{
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
+    
 }
 
 

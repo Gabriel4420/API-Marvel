@@ -14,11 +14,11 @@ function createHash(timeStamp) {
 }
 
 
-async function fetchCards() {
+async function fetchAPI() {
   //tempo agora
   const timeStamp = Date.now().toString();
   //numero randomico de herois
-  const offset = Math.floor((Math.random() * maxCharacters) + 1);
+  const offset = 1;
   //hash para validar a requisição
   const hash = createHash(timeStamp);
 
@@ -36,20 +36,21 @@ async function fetchCards() {
   xhttp.send()
 }
 
-function renderTable(data) {
+async function renderTable(data) {
   tableContainer.innerHTML = "";
-  console.log(data.data.results)
-  data.data.results.map(renderData);
+ 
+  await data.data.results.map(renderData);
+  
 }
 
-function createPagesItem(data) {
-  let lines = "";
-  for (let i = 1; i <= data.data.offset.length; i++) {
-    lines += `<li id="page-${i}" class="page-item"><a class="page-link" onclick="goToPage(${i})">${i}</a></li>`;
-  }
-
-  return lines;
+function goNext(data) {
+  return data.offset = data.offset += 4;
 }
+function goPrevious(data) {
+  return data.offset --;
+}
+
+
 
 async function renderData(data) {
 
@@ -75,42 +76,20 @@ async function renderData(data) {
       
       <div class="info">
         <ul>
-            ${data.series.items.length > 0 ? data.series.items.map(item => `<li>${item.name}</li>`) : 'inexistente' }
+            ${data.series.items.length > 0 ? data.series.items.map(item => `<li>${item.name}</li>`).slice(0,3).join(' ') : 'inexistente' }
         </ul>
       </div>
       
       <div class="infoEventos">
         <ul>
-            ${data.events.items.length > 0 ? data.events.items.map(item => `<li>${item.name}</li>`) : 'inexistente' }
+            ${data.events.items.length > 0 ? data.events.items.map(item => `<li>${item.name}</li>`).slice(0,3).join(' ') : 'inexistente' }
         </ul>
-      </div>
-      
-      
-      
+     </div>
     </div>
-    
-     
+   
   </div>
 
-  <div class="col-md-12">
-  <nav>
-      <ul class="pagination">
-          <li id="previousPage" class="page-item">
-          <a class="page-link" onclick="previousPage()" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-              <span class="sr-only">Previous</span>
-          </a>
-          </li>
-          ${createPagesItem()}
-          <li id="nextPage" class="page-item">
-          <a class="page-link" onclick="nextPage()" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-              <span class="sr-only">Next</span>
-          </a>
-          </li>
-      </ul>
-  </nav>
-</div>
+  
   
     `;
 
@@ -118,10 +97,9 @@ async function renderData(data) {
 }
 
 async function main() {
-  const data = await fetchCards();
-  for (let i = 0; i < 4; i++) {
-    renderTable(data.data.results)
-  }
+  const data = await fetchAPI();
+  
+  renderTable(data)
 }
 
 main();
