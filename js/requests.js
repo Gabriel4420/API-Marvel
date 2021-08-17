@@ -148,19 +148,32 @@ function Modal(data) {
 
 
 function goNext() {
-  const button = document.querySelector('#next');
+  const button = document.querySelector('#previous');
 
 
-  button.addEventListener('click', offset => {
-    offset += 4;
+  button.addEventListener('click', () => {
+    currentPage = currentPage + 8 - 4;
+    offset = currentPage;
+    fetchAPI();
   });
 
-  
+
 
 }
 
-function goPrevious(data) {
-  return data.data.offset -= 4;
+function goPrevious() {
+  const button = document.querySelector('#previous');
+
+
+  button.addEventListener('click', () => {
+    currentPage = currentPage - 8 + 4;
+    if (offset > 0) {
+      offset = currentPage;
+      fetchAPI();
+    }
+
+  });
+
 }
 
 
@@ -208,10 +221,9 @@ async function renderData(data) {
 
   tableContainer.appendChild(div);
 }
- function main() {
-  const data =  fetchAPI();
-  console.log(data.data);
-  console.log(renderTable(data))
+
+function main() {
+  const data = fetchAPI();
   renderTable(data)
 }
 
