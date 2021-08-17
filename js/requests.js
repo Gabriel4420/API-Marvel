@@ -24,7 +24,7 @@ async function fetchAPI() {
   const hash = createHash(timeStamp);
 
 
-  const urlAPI = "http://gateway.marvel.com/v1/public/characters?limit=4&offset=" + offset + "&ts=" + timeStamp + "&apikey=" + publicKey + "&hash=" + hash;
+  const urlAPI = "https://developer.marvel.com/v1/public/characters?limit=4&offset=" + offset + "&ts=" + timeStamp + "&apikey=" + publicKey + "&hash=" + hash;
   console.log(urlAPI);
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
@@ -51,7 +51,7 @@ async function fetchAPICharacter() {
     fetchAPI();
   }
 
-  const urlAPI = "http://gateway.marvel.com/v1/public/characters?ts=" + timeStamp + "&apikey=" + publicKey + "&hash=" + hash + "&limit=4" + "&nameStartsWith=" + input.value;
+  const urlAPI = "https://developer.marvel.com/v1/public/characters?ts=" + timeStamp + "&apikey=" + publicKey + "&hash=" + hash + "&limit=4" + "&nameStartsWith=" + input.value;
   console.log(urlAPI);
 
 
@@ -78,7 +78,7 @@ async function fetchAPIModal() {
     fetchAPI();
   }
 
-  const urlAPI = "http://gateway.marvel.com/v1/public/characters?ts=" + timeStamp + "&apikey=" + publicKey + "&hash=" + hash + "&limit=4" + "&nameStartsWith=" + input.value;
+  const urlAPI = "https://developer.marvel.com/v1/public/characters?ts=" + timeStamp + "&apikey=" + publicKey + "&hash=" + hash + "&limit=4" + "&nameStartsWith=" + input.value;
   console.log(urlAPI);
 
 
