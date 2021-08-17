@@ -1,7 +1,8 @@
 const privateKey = "798ad1abb791ec4e95d998c39df37dc57e2a3171";
 const publicKey = "e64686edbf6176c8736bb2208709a322";
 const maxCharacters = 1500;
-
+var currentPage = 0;
+var offset = currentPage;
 
 const tableContainer = document.querySelector('#table');
 
@@ -18,7 +19,7 @@ async function fetchAPI() {
   //tempo agora
   const timeStamp = Date.now().toString();
   //numero randomico de herois
-  const offset = 1;
+
   //hash para validar a requisição
   const hash = createHash(timeStamp);
 
@@ -29,10 +30,9 @@ async function fetchAPI() {
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
       var data = JSON.parse(this.responseText);
-      renderTable(data);
-      console.log(data)
       goNext(data);
       goPrevious(data);
+      renderTable(data);
     }
   };
   xhttp.open("GET", urlAPI, true);
@@ -42,18 +42,16 @@ async function fetchAPI() {
 async function fetchAPICharacter() {
   //tempo agora
   const timeStamp = Date.now().toString();
-  //numero randomico de herois
-  const offset = 1000;
   //hash para validar a requisição
   const hash = createHash(timeStamp);
 
   const input = document.querySelector('input');
 
-  if(input.value == ''){
+  if (input.value == '') {
     fetchAPI();
   }
 
-  const urlAPI = "http://gateway.marvel.com/v1/public/characters?ts=" + timeStamp + "&apikey=" + publicKey+ "&hash=" + hash+ "&limit=4"+"&nameStartsWith="+input.value ;
+  const urlAPI = "http://gateway.marvel.com/v1/public/characters?ts=" + timeStamp + "&apikey=" + publicKey + "&hash=" + hash + "&limit=4" + "&nameStartsWith=" + input.value;
   console.log(urlAPI);
 
 
@@ -68,23 +66,101 @@ async function fetchAPICharacter() {
   xhttp.send()
 }
 
+async function fetchAPIModal() {
+  //tempo agora
+  const timeStamp = Date.now().toString();
+  //hash para validar a requisição
+  const hash = createHash(timeStamp);
+
+  const input = document.querySelector('input');
+
+  if (input.value == '') {
+    fetchAPI();
+  }
+
+  const urlAPI = "http://gateway.marvel.com/v1/public/characters?ts=" + timeStamp + "&apikey=" + publicKey + "&hash=" + hash + "&limit=4" + "&nameStartsWith=" + input.value;
+  console.log(urlAPI);
+
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      var data = JSON.parse(this.responseText);
+      renderModal(data);
+    }
+  };
+  xhttp.open("GET", urlAPI, true);
+  xhttp.send()
+}
+
 function renderTable(data) {
   tableContainer.innerHTML = "";
- 
+
   data.data.results.map(renderData);
+
+}
+
+function renderModal(data) {
+  tableContainer.innerHTML = "";
+  data.data.results.map(Modal);
+
+}
+
+function Modal(data) {
+  let i = 0;
+
+  const div = document.createElement("div");
+
+  div.className = "table";
+
+
+
+  div.innerHTML = `
+
+  <div class="tableContent">
+    <div class="row" style=".row:nth-child(2n){
+        background-color: blue !important;
+        color: white;
+    }">
+            
+      <div class="info">
+        <ul>
+            ${data.series.items.length > 0 ? data.series.items.map(item => `<li>${item.name}</li>`).slice(0,3).join(' ') : 'inexistente' }
+        </ul>
+      </div>
+      
+      <div class="infoEventos">
+        <ul>
+            ${data.events.items.length > 0 ? data.events.items.map(item => `<li>${item.name}</li>`).slice(0,3).join(' ') : 'inexistente' }
+        </ul>
+     </div>
+    </div>
+   
+  </div>
+
   
+  
+    `;
+
+  tableContainer.appendChild(div);
 }
 
-function modal(data){
-  console.log(data);
+
+
+function goNext() {
+  const button = document.querySelector('#next');
+
+
+  button.addEventListener('click', offset => {
+    offset += 4;
+  });
+
+  
+
 }
 
-async function goNext(data) {
-  const offset = await data.data.offset;
-  return offset += 1;
-}
 function goPrevious(data) {
-  return data.data.offset -=4;
+  return data.data.offset -= 4;
 }
 
 
@@ -132,10 +208,10 @@ async function renderData(data) {
 
   tableContainer.appendChild(div);
 }
-
-async function main() {
-  const data = await fetchAPI();
-  
+ function main() {
+  const data =  fetchAPI();
+  console.log(data.data);
+  console.log(renderTable(data))
   renderTable(data)
 }
 
