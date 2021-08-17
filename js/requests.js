@@ -36,6 +36,7 @@ async function fetchAPI() {
     }
   };
   xhttp.open("GET", urlAPI, true);
+  xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
   xhttp.send()
 }
 
@@ -63,6 +64,7 @@ async function fetchAPICharacter() {
     }
   };
   xhttp.open("GET", urlAPI, true);
+  xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
   xhttp.send()
 }
 
@@ -90,6 +92,7 @@ async function fetchAPIModal() {
     }
   };
   xhttp.open("GET", urlAPI, true);
+  xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
   xhttp.send()
 }
 
