@@ -24,7 +24,7 @@ async function fetchAPI() {
   const hash = createHash(timeStamp);
 
 
-  const urlAPI = "https://gateway.marvel.com/v1/public/characters?limit=4&offset=" + offset + "&ts=" + timeStamp + "&apikey=" + publicKey + "&hash=" + hash;
+  const urlAPI = "http://gateway.marvel.com/v1/public/characters?limit=4&offset=" + offset + "&ts=" + timeStamp + "&apikey=" + publicKey + "&hash=" + hash;
   console.log(urlAPI);
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
@@ -36,7 +36,7 @@ async function fetchAPI() {
     }
   };
   xhttp.open("GET", urlAPI, true);
-  xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+
   xhttp.send()
 }
 
@@ -64,7 +64,7 @@ async function fetchAPICharacter() {
     }
   };
   xhttp.open("GET", urlAPI, true);
-  xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+
   xhttp.send()
 }
 
@@ -80,7 +80,7 @@ async function fetchAPIModal() {
     fetchAPI();
   }
 
-  const urlAPI = "https://gateway.marvel.com/v1/public/characters?ts=" + timeStamp + "&apikey=" + publicKey + "&hash=" + hash + "&limit=4" + "&nameStartsWith=" + input.value;
+  const urlAPI = "http://gateway.marvel.com/v1/public/characters?ts=" + timeStamp + "&apikey=" + publicKey + "&hash=" + hash + "&limit=4" + "&nameStartsWith=" + input.value;
   console.log(urlAPI);
 
 
@@ -92,7 +92,7 @@ async function fetchAPIModal() {
     }
   };
   xhttp.open("GET", urlAPI, true);
-  xhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+
   xhttp.send()
 }
 
@@ -151,7 +151,7 @@ function Modal(data) {
 
 
 function goNext() {
-  const button = document.querySelector('#previous');
+  const button = document.querySelector('#next');
 
 
   button.addEventListener('click', () => {
@@ -169,8 +169,8 @@ function goPrevious() {
 
 
   button.addEventListener('click', () => {
-    currentPage = currentPage - 8 + 4;
-    if (offset > 0) {
+    currentPage = currentPage - 4;
+    if (offset > 8) {
       offset = currentPage;
       fetchAPI();
     }
