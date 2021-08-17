@@ -209,10 +209,6 @@ main .content #table .table .tableContent .row .info ul{
     list-style:none;
 }
 
-main .content #table .table .tableContent .row .info ul li{
-    
-}
-
 
 main .content #table .table .tableContent .row .infoEventos {
     display: flex;
@@ -259,6 +255,154 @@ main .pagination{
     
 }
 
+@media (min-width: 2560px) {
+    main .content #table .table .tableContent {
+        margin: 65px;
+    }
+  }
+  @media (min-width: 1025px) and (max-width: 1440px) {
+    main .content #table .table .tableContent {
+        margin: 35px;
+    }
+  }
+  @media (min-width: 768px) and (max-width: 1024px) {
+    main .content #table .table .tableContent {
+        margin: 20px;
+    }
+
+    header .center h3 {
+        font-size:16px;
+    }
+
+    main .content #table .table .tableContent .row .character h3 {
+        font-size:15px;
+    }
+  }
+  @media (min-width: 481px) and (max-width: 767px) {
+   
+  }
+  @media (max-width: 480px) {
+    header {
+
+        width:540px;
+    }
+
+    main .content{
+        width:540px;
+    }
+    main .content #table .table .tableContent {
+        margin: 0px;
+    }
+
+    header .center h3 {
+        font-size:12px;
+    }
+
+    main .content #table .table .tableContent .row .character h3 {
+        font-size:15px;
+    }
+
+    main .content #table{
+        max-width: 100%;
+    margin-left: -30px;
+    margin-right: 10px;
+    }
+    
+    
+   
+    main .content .tableHeader {
+        width:500px;
+        max-width: 100%;
+
+    }
+
+    main .content .tableHeader h2:nth-child(2),
+    main .content .tableHeader h2:nth-child(3){
+        display:none;
+    }
+    
+    main .content #table .table .tableContent {
+        margin: 35px;
+        display: flex;
+        flex-direction: column;
+        width:94.7%;
+        border: 1px solid white;
+    }
+    
+    
+    main .content #table .table .tableContent .row {
+        display: flex;
+        justify-content: space-between;
+        
+        
+    }
+    
+    
+    
+    main .content #table .table .tableContent .row .character {
+        display: flex;
+        align-items: center;
+    
+    }
+    
+    main .content #table .table .tableContent .row .info {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        line-height: 25px;
+       
+    }
+    
+    main .content #table .table .tableContent .row .info ul{
+        list-style:none;
+    }
+    
+    
+    main .content #table .table .tableContent .row .infoEventos {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        line-height: 20px;
+        padding-right:40px;
+    
+    }
+    
+    
+    
+    main .content #table .table .tableContent .row .infoEventos ul{
+        list-style:none;
+      
+    }
+    
+    main .content #table .table .tableContent .row .character img {
+        width: 150px;
+        height: 150px;
+        border-radius: 10%;
+        margin: 10px;
+    }
+    
+    main .content #table .table .tableContent .row .chracter h3 {
+        margin-left: 40px;
+    }
+    
+    
+    main .pagination .link{
+        background-color:transparent;
+        color:white;
+        outline:0;
+        padding:15px;
+        border:1px solid white;
+        margin-left:10px;
+        cursor: pointer;
+    }
+    
+    main .pagination{
+        display:flex;
+        justify-content:space-evenly;
+        align-items:center;
+        
+    }
+  }
 
 
 

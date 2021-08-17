@@ -30,24 +30,61 @@ async function fetchAPI() {
     if (this.readyState == 4 && this.status == 200) {
       var data = JSON.parse(this.responseText);
       renderTable(data);
+      console.log(data)
+      goNext(data);
+      goPrevious(data);
     }
   };
   xhttp.open("GET", urlAPI, true);
   xhttp.send()
 }
 
-async function renderTable(data) {
+async function fetchAPICharacter() {
+  //tempo agora
+  const timeStamp = Date.now().toString();
+  //numero randomico de herois
+  const offset = 1000;
+  //hash para validar a requisição
+  const hash = createHash(timeStamp);
+
+  const input = document.querySelector('input');
+
+  if(input.value == ''){
+    fetchAPI();
+  }
+
+  const urlAPI = "http://gateway.marvel.com/v1/public/characters?ts=" + timeStamp + "&apikey=" + publicKey+ "&hash=" + hash+ "&limit=4"+"&nameStartsWith="+input.value ;
+  console.log(urlAPI);
+
+
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+      var data = JSON.parse(this.responseText);
+      renderTable(data);
+    }
+  };
+  xhttp.open("GET", urlAPI, true);
+  xhttp.send()
+}
+
+function renderTable(data) {
   tableContainer.innerHTML = "";
  
-  await data.data.results.map(renderData);
+  data.data.results.map(renderData);
   
 }
 
-function goNext(data) {
-  return data.offset = data.offset += 4;
+function modal(data){
+  console.log(data);
+}
+
+async function goNext(data) {
+  const offset = await data.data.offset;
+  return offset += 1;
 }
 function goPrevious(data) {
-  return data.offset --;
+  return data.data.offset -=4;
 }
 
 
